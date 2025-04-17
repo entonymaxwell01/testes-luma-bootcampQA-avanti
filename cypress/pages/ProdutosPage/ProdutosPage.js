@@ -17,14 +17,14 @@ class ProdutoPage {
       .and("have.length.gt", 0);
   }
 
-  acessarProduto() {
+  acessarProduto(nome) {
     cy.scrollTo("bottom", { duration: 500 });
-    cy.get(ProdutosElements.produtoName).contains("Breathe-Easy Tank").click();
+    cy.get(ProdutosElements.produtoName).contains(nome).click();
 
     cy.get(ProdutosElements.produtoTitle)
-      .contains("Breathe-Easy Tank")
+      .contains(nome)
       .should("be.visible")
-      .should("have.text", "Breathe-Easy Tank");
+      .should("have.text", nome);
 
     cy.get(ProdutosElements.produtoPrice)
       .contains("US$ 34,00")
@@ -32,15 +32,15 @@ class ProdutoPage {
       .should("contain.text", "US$");
   }
 
-  adicionarProdutoAoCarrinho() {
-    this.acessarProduto();
+  adicionarProdutoAoCarrinho(nome, tamanho, cor) {
+    this.acessarProduto(nome);
 
     cy.get(ProdutosElements.produtoSelectColor)
       .should("be.visible")
-      .select("White", { force: true });
+      .select(cor, { force: true });
     cy.get(ProdutosElements.produtoSelectSize)
       .should("be.visible")
-      .select("S", { force: true });
+      .select(tamanho, { force: true });
     cy.get(ProdutosElements.produtoAddToCart).should("be.visible").click();
   }
 }
