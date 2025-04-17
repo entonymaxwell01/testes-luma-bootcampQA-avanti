@@ -4,7 +4,7 @@ export const ProdutosElements = {
   produtoName: ".ProductCard-Name",
   produtoTitle: ".ProductPage-Title",
   produtoPrice: ".ProductPrice-PriceValue",
-  produtoAddToCart: ".ProductActions-AddToCart",
+  produtoAddToCart: "button.ProductActions-AddToCart",
   produtoSelectColor: "#color",
   produtoSelectSize: "#size",
 };
