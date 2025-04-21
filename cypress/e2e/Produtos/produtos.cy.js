@@ -14,8 +14,9 @@ describe("Testes da funcionalidade de produtos", () => {
     ProdutosPage.acessarProduto("Breathe-Easy Tank");
   });
 
-  it("Deve adicionar um produto ao carrinho", () => {
-    ProdutosPage.adicionarProdutoAoCarrinho("Breathe-Easy Tank", "S", "White");
+  it.only("Deve adicionar um produto ao carrinho com sucesso", () => {
+    ProdutosPage.adicionarProdutoAoCarrinho("Breathe-Easy Tank", "M", "White");
+    cy.get(NotificacaoElements.successMessage).should("be.visible");
   });
 
   it("Deve falhar ao tentar adicionar um produto no carrinho sem selecionar o tamanho", () => {
