@@ -1,3 +1,4 @@
 export const NotificacaoElements = {
-  errorMessage: ".NotificationList",
+  errorMessage: ".Notification_type_error",
+  successMessage: ".Notification_type_success",
 };
