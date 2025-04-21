@@ -19,14 +19,14 @@ describe("Testes da funcionalidade de produtos", () => {
     cy.get(NotificacaoElements.successMessage).should("be.visible");
   });
 
-  it("Deve falhar ao tentar adicionar um produto no carrinho sem selecionar o tamanho", () => {
+  it("Deve apresentar mensagem de erro ao tentar adicionar um produto no carrinho sem selecionar o tamanho", () => {
     ProdutosPage.adicionarProdutoAoCarrinho("Breathe-Easy Tank", "", "White");
     cy.get(NotificacaoElements.errorMessage)
       .should("be.visible")
       .and("contain.text", "Incorrect or missing options!");
   });
 
-  it("Deve falhar ao tentar adicionar um produto no carrinho sem selecionar a cor", () => {
+  it("Deve apresentar mensagem de erro ao tentar adicionar um produto no carrinho sem selecionar a cor", () => {
     ProdutosPage.adicionarProdutoAoCarrinho("Breathe-Easy Tank", "S", "");
     cy.get(NotificacaoElements.errorMessage)
       .should("be.visible")
