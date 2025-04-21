@@ -37,11 +37,20 @@ class ProdutoPage {
 
     cy.get(ProdutosElements.produtoSelectColor)
       .should("be.visible")
-      .select(cor, { force: true });
+      .select(cor, { force: true })
+      .should("have.value", "395126");
     cy.get(ProdutosElements.produtoSelectSize)
       .should("be.visible")
-      .select(tamanho, { force: true });
-    cy.get(ProdutosElements.produtoAddToCart).should("be.visible").click();
+      .select(tamanho, { force: true })
+      .should("have.value", "395235");
+
+    cy.get(ProdutosElements.produtoPrice)
+      .contains("US$ 34,00")
+      .should("be.visible")
+      .should("contain.text", "US$");
+
+    cy.wait(5000);
+    cy.contains("span", "Add to cart").click();
   }
 }
 
