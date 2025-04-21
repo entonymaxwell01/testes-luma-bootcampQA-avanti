@@ -10,6 +10,7 @@ module.exports = defineConfig({
     pageLoadTimeout: 60000,
     defaultCommandTimeout: 10000,
   },
+  video: true,
   reporter: "mochawesome",
   reporterOptions: {
     reportDir: "cypress/reports",
