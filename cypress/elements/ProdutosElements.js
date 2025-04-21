@@ -7,4 +7,5 @@ export const ProdutosElements = {
   produtoAddToCart: "button.ProductActions-AddToCart",
   produtoSelectColor: "#color",
   produtoSelectSize: "#size",
+  produtoSelectOption: ".FieldSelect-Option_isExpanded",
 };
