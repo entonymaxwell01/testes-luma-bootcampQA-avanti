@@ -1,5 +1,6 @@
 import ProdutosPage from "../../pages/ProdutosPage/ProdutosPage";
 import { NotificacaoElements } from "../../elements/NotificacaoElements";
+import { ProdutosElements } from "../../elements/ProdutosElements";
 
 beforeEach(() => {
   ProdutosPage.visit();
@@ -14,7 +15,7 @@ describe("Testes da funcionalidade de produtos", () => {
     ProdutosPage.acessarProduto("Breathe-Easy Tank");
   });
 
-  it.only("Deve adicionar um produto ao carrinho com sucesso", () => {
+  it("Deve adicionar um produto ao carrinho com sucesso", () => {
     ProdutosPage.adicionarProdutoAoCarrinho("Breathe-Easy Tank", "M", "White");
     cy.get(NotificacaoElements.successMessage).should("be.visible");
   });
@@ -31,5 +32,12 @@ describe("Testes da funcionalidade de produtos", () => {
     cy.get(NotificacaoElements.errorMessage)
       .should("be.visible")
       .and("contain.text", "Incorrect or missing options!");
+  });
+
+  it.only("Deve alterar a moeda de compra para Euro", () => {
+    ProdutosPage.alterarMoeda();
+    cy.get(ProdutosElements.produtoPrice)
+      .should("be.visible")
+      .should("contain.text", "EUR$");
   });
 });
