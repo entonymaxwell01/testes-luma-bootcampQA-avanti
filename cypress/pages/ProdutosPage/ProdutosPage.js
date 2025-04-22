@@ -52,6 +52,11 @@ class ProdutoPage {
     cy.wait(5000);
     cy.contains("span", "Add to cart").click();
   }
+
+  alterarMoeda() {
+    cy.get(ProdutosElements.moedaSelect).select("EUR", { force: true });
+    this.visualizarProdutos();
+  }
 }
 
 export default new ProdutoPage();
