@@ -8,4 +8,5 @@ export const ProdutosElements = {
   produtoSelectColor: "#color",
   produtoSelectSize: "#size",
   produtoSelectOption: ".FieldSelect-Option_isExpanded",
+  moedaSelect: "#CurrencySwitcherList",
 };
