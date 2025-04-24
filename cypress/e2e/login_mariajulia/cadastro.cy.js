@@ -1,4 +1,3 @@
-
 describe ('Cadastro', () => {
 
    it('Realizar cadastro de novo usuário com dados válidos', () => {
