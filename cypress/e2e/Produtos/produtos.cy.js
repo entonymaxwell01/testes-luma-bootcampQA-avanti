@@ -16,25 +16,27 @@ describe("Testes da funcionalidade de produtos", () => {
   });
 
   it("Deve adicionar um produto ao carrinho com sucesso", () => {
-    ProdutosPage.adicionarProdutoAoCarrinho("Breathe-Easy Tank", "M", "White");
+    ProdutosPage.adicionarProdutoAoCarrinho("Breathe-Easy Tank");
     cy.get(NotificacaoElements.successMessage).should("be.visible");
   });
 
   it("Deve apresentar mensagem de erro ao tentar adicionar um produto no carrinho sem selecionar o tamanho", () => {
-    ProdutosPage.adicionarProdutoAoCarrinho("Breathe-Easy Tank", "", "White");
+    ProdutosPage.falhaAoAdicionarProdutoAoCarrinhoSemTamanho(
+      "Breathe-Easy Tank"
+    );
     cy.get(NotificacaoElements.errorMessage)
       .should("be.visible")
       .and("contain.text", "Incorrect or missing options!");
   });
 
   it("Deve apresentar mensagem de erro ao tentar adicionar um produto no carrinho sem selecionar a cor", () => {
-    ProdutosPage.adicionarProdutoAoCarrinho("Breathe-Easy Tank", "S", "");
+    ProdutosPage.falhaAoAdicionarProdutoAoCarrinhoSemCor("Breathe-Easy Tank");
     cy.get(NotificacaoElements.errorMessage)
       .should("be.visible")
       .and("contain.text", "Incorrect or missing options!");
   });
 
-  it.only("Deve alterar a moeda de compra para Euro", () => {
+  it("Deve alterar a moeda de compra para Euro", () => {
     ProdutosPage.alterarMoeda();
     cy.get(ProdutosElements.produtoPrice)
       .should("be.visible")
