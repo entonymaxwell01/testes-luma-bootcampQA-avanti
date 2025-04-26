@@ -32,7 +32,7 @@ class ProdutoPage {
       .should("contain.text", "US$");
   }
 
-  adicionarProdutoAoCarrinho(nome, tamanho, cor) {
+  adicionarProdutoAoCarrinho(nome) {
     this.acessarProduto(nome);
 
     cy.get(ProdutosElements.produtoSelectColor)
@@ -42,6 +42,48 @@ class ProdutoPage {
     cy.get(ProdutosElements.produtoSelectSize)
       .should("be.visible")
       .select(tamanho, { force: true })
+      .should("have.value", "395235");
+
+    cy.get(ProdutosElements.produtoPrice)
+      .contains("US$ 34,00")
+      .should("be.visible")
+      .should("contain.text", "US$");
+
+    cy.wait(5000);
+    cy.contains("span", "Add to cart").click();
+  }
+
+  falhaAoAdicionarProdutoAoCarrinhoSemTamanho(nome) {
+    this.acessarProduto(nome);
+
+    cy.get(ProdutosElements.produtoSelectColor)
+      .should("be.visible")
+      .select("395126", { force: true })
+      .should("have.value", "395126");
+    cy.get(ProdutosElements.produtoSelectSize)
+      .should("be.visible")
+      .select("", { force: true })
+      .should("have.value", "");
+
+    cy.get(ProdutosElements.produtoPrice)
+      .contains("US$ 34,00")
+      .should("be.visible")
+      .should("contain.text", "US$");
+
+    cy.wait(5000);
+    cy.contains("span", "Add to cart").click();
+  }
+
+  falhaAoAdicionarProdutoAoCarrinhoSemCor(nome) {
+    this.acessarProduto(nome);
+
+    cy.get(ProdutosElements.produtoSelectColor)
+      .should("be.visible")
+      .select("", { force: true })
+      .should("have.value", "");
+    cy.get(ProdutosElements.produtoSelectSize)
+      .should("be.visible")
+      .select("395235", { force: true })
       .should("have.value", "395235");
 
     cy.get(ProdutosElements.produtoPrice)
